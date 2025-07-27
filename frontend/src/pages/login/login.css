@@ -1,0 +1,110 @@
+/* .login-container{
+    display: grid;
+    grid-template: 1fr 1fr;
+    height: 10rem;
+    aspect-ratio: 2;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    color: white;
+}
+
+.btn{
+    border: 3px solid rgba(255, 255, 255, 0.15);
+}
+
+.login-container input{
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: transparent;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: white;
+} */
+
+.login-container {
+    max-width: 400px;
+    margin: 5rem auto;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+     border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.login-container label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    background-color: transparent;
+    height: 2rem;
+}
+
+.login-container input:focus {
+    border-color: #4361ee;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+}
+
+.login-container .btn {
+    background-color: #4361ee;
+    color: white;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+    height: 2.5rem;
+}
+
+.login-container .btn:hover {
+    background-color: #3a56d4;
+    transform: translateY(-1px);
+}
+
+.login-container .btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .login-container {
+        margin: 2rem auto;
+        padding: 1.5rem;
+        width: 90%;
+    }
+    
+    .login-container input, 
+    .login-container .btn {
+        padding: 0.75rem;
+    }
+}

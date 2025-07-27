@@ -1,0 +1,10 @@
+.MainContainer{
+    display: flex;
+    justify-content:space-evenly;
+    margin-top: 10rem;
+}
+
+.MainContainer a {
+    text-decoration: none ; 
+    color: white;
+}

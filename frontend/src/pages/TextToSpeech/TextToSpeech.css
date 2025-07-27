@@ -1,0 +1,86 @@
+.text-to-speech-container {
+  width: 800px;
+  aspect-ratio: 2;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  margin-top: 5rem;
+  border-radius: 1rem;
+}
+
+.text-to-speech-container h2 {
+  color: white;
+  text-align: center;
+}
+
+.input-section textarea {
+  width: 95%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  font-size: 16px;
+  color: white;
+  background-color: transparent;
+}
+
+.controls {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.controls button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.controls button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #d32f2f;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #fde7e7;
+  border-radius: 4px;
+}
+
+.audio-player {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.audio-player audio {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #2196F3;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.download-btn:hover {
+  background-color: #0b7dda;
+}

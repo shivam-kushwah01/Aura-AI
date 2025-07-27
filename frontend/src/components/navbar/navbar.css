@@ -1,0 +1,55 @@
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0rem 2rem;
+}
+
+.innerDiv{
+    display: flex;
+    align-items: center;
+}
+
+.innerDiv button{
+    margin: 0.5rem;
+}
+
+.logo{
+    height: 2.5rem;
+    aspect-ratio: 1;
+    background: url('Aura.svg');
+    background-size: cover;
+    gap: 0.5rem;
+}
+
+.name{
+    color: white;
+    font-weight: 500;
+}
+
+.btn{
+    height: 2rem;
+    aspect-ratio: 2.5;
+    border-radius: 1rem;
+    border: none;
+    background: none;
+    font-weight: 600;
+}
+
+.signup{
+    border: 1px solid white;
+    color: white;
+}
+
+.login{
+    background-color: #000000;
+    border-radius: 0.5rem;
+}
+
