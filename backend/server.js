@@ -7,7 +7,6 @@ const passport = require('passport');
 const session = require('express-session');
 const flash = require("connect-flash");
 const userRouter = require("./routes/user");
-const speechRoute = require("./routes/speech");
 const cors = require('cors');
 
 
@@ -39,7 +38,6 @@ passport.deserializeUser(User.deserializeUser());
 
 //routes
 app.use("/", userRouter);
-app.use("/", speechRoute);
 
 app.use((req, res) => {
     res.send('Page Not Found');
