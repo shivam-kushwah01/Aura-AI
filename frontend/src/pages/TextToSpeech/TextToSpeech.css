@@ -6,7 +6,7 @@
   background-color: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 1rem;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.30);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   color: white;
@@ -14,20 +14,20 @@
   border-radius: 1rem;
 }
 
-.text-to-speech-container h2 {
+.text-to-speech-container h1 {
   color: white;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 .input-section textarea {
-  width: 95%;
+  width: 100%;
   padding: 1rem;
   border: 1px solid #ddd;
   border-radius: 4px;
-  resize: vertical;
   font-size: 16px;
   color: white;
-  background-color: transparent;
+  background-color: #640D5F;
 }
 
 .controls {

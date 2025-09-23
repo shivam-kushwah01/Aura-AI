@@ -44,12 +44,15 @@
 }
 
 .signup{
-    border: 1px solid white;
     color: white;
 }
 
 .login{
     background-color: #000000;
     border-radius: 0.5rem;
+}
+
+.logout{
+    background-color: red;
 }
 

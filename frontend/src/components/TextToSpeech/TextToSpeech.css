@@ -1,6 +1,6 @@
 .Container{
-    height: 10rem;
-    aspect-ratio: 1.5;
+    height: 15rem;
+    aspect-ratio: 3;
     background-color: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 1rem;
@@ -14,13 +14,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    margin-bottom: 2rem;
 }
 
 .Container h2{
     display: inline;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .Container i{
     font-size: 1.2rem;
+}
+
+.clr{
+    background-color: oklch(58.5% .233 277.117);
+    padding: 0.2rem;
 }

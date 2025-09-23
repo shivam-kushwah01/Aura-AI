@@ -6,6 +6,7 @@ const TextToSpeech = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [audioUrl, setAudioUrl] = useState('');
   const [error, setError] = useState('');
+  const MURF_API_KEY = import.meta.env.VITE_MURF_API_KEY;
 
   const handleConvert = async () => {
     if (!text.trim()) {
@@ -21,7 +22,7 @@ const TextToSpeech = () => {
       const response = await fetch('https://api.murf.ai/v1/speech/generate', {
         method: 'POST',
         headers: {
-          "api-key": "ap2_3dc2ddc3-0e3d-4a7f-9a4b-b11eef356dad",
+          "api-key":`${MURF_API_KEY}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -52,7 +53,7 @@ const TextToSpeech = () => {
 
   return (
     <div className="text-to-speech-container">
-      <h2>Text to Speech Converter</h2>
+      <h1>Text to Speech Converter</h1>
       
       <div className="input-section">
         <textarea

@@ -1,32 +1,3 @@
-// import './Translation.css'
-
-// export default function Translation(){
-// const url = 'https://api.murf.ai/v1/text/translate';
-// const options = {
-//   method: 'POST',
-//   headers: {
-//     "api-key": "ap2_3dc2ddc3-0e3d-4a7f-9a4b-b11eef356dad",
-//     'Content-Type': 'application/json'
-//   },
-//   body: '{"targetLanguage":"es-ES","texts":["Hello, world.","How are you?"]}'
-// };
-
-// async function fatching(){
-//     try {
-//   const response = await fetch(url, options);
-//   const data = await response.json();
-//   console.log(data);
-// } catch (error) {
-//   console.error(error);
-// }
-//  }
-//  return(
-//     <div className="translation-container">
-//         <button onClick={fatching}>convert</button>
-//     </div>
-//  );
-// }
-
 import React, { useState } from 'react';
 import './Translation.css';
 
@@ -36,6 +7,7 @@ export default function Translation() {
   const [targetLanguage, setTargetLanguage] = useState('es-ES');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const MURF_API_KEY = import.meta.env.VITE_MURF_API_KEY;
 
   const languages = [
   { code: 'en-US', name: 'English - US & Canada' },
@@ -76,7 +48,7 @@ export default function Translation() {
       const response = await fetch('https://api.murf.ai/v1/text/translate', {
         method: 'POST',
         headers: {
-          "api-key": "ap2_3dc2ddc3-0e3d-4a7f-9a4b-b11eef356dad",
+          "api-key": `${MURF_API_KEY}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({

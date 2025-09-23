@@ -6,6 +6,12 @@ import Signup from './pages/signup/signup';
 import TextToSpeech from './pages/TextToSpeech/TextToSpeech';
 import SpeechToSpeech from './pages/SpeechToSpeech/SpeechToSpeech';
 import Translation from './pages/Translation/Translation';
+import { Skiper58 } from "./components/intro/intro";
+import Footer from './components/footer/footer';
+import AuraAIFaq from './pages/faq/faq';
+import Features from './pages/features/features';
+import Contact from './pages/contact/contact';
+import Pricing from './pages/pricing/pricing';
 
 import { Route, Routes, Navigate } from "react-router-dom";
 
@@ -14,11 +20,11 @@ function App() {
   return (
     <>
     <Routes>
-      <Route path='/login' exact element = { 
+      <Route path='/auth/login' exact element = { 
       <>
       <Login />
       </>}/>
-      <Route path='/signup' exact element = { 
+      <Route path='/auth/signup' exact element = { 
       <>
       <Signup />
       </>}/>
@@ -34,10 +40,28 @@ function App() {
       <>
       <Translation />
       </>}/>
+      <Route path='/faq' exact element = { 
+      <>
+      <AuraAIFaq />
+      </>}/>
+      <Route path='/features' exact element = { 
+      <>
+      <Features />
+      </>}/>
+      <Route path='/contact' exact element = { 
+      <>
+      <Contact />
+      </>}/>
+      <Route path='/pricing' exact element = { 
+      <>
+      <Pricing />
+      </>}/>
       <Route path="/" exact element={
       <>
       <Navbar />
+      <Skiper58 />
       <MainContainer />
+      <Footer />
       </>} /> 
     </Routes>
     </>

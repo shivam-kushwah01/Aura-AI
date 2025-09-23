@@ -1,0 +1,12 @@
+.intro{
+    font-size: 3rem;
+    padding: 2rem;
+    font-family: "Bebas Neue", sans-serif;
+    margin-top: 3rem;
+}
+
+.intro h1{
+    text-align: left;
+    line-height: 6rem;
+    margin: 0;
+}
