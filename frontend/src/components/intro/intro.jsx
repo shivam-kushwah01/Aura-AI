@@ -15,7 +15,7 @@ const navigationItems = [
 
 export const Skiper58 = () => {
   return (
-    <ul className="bs flex flex-col items-start justify-center gap-5 rounded-2xl px-7 py-[7rem] backdrop-blur-sm">
+    <ul className="bs flex flex-col items-start justify-center gap-5 rounded-2xl px-7 py-9 backdrop-blur-sm">
       {navigationItems.map((item, index) => (
         <li
           className="relative flex cursor-pointer flex-col items-center overflow-visible"
@@ -24,7 +24,7 @@ export const Skiper58 = () => {
           <div className="relative flex items-start">
             <TextRoll
               center
-              className="text-2xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase leading-[0.8] tracking-[-0.03em] transition-colors"
+              className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold uppercase leading-[0.8] tracking-[-0.03em] transition-colors"
             >
               {item.name}
             </TextRoll>
@@ -45,7 +45,7 @@ const TextRoll = ({ children, className, center = false }) => {
   return (
     <motion.span
       initial="initial"
-      whileHover="hovered"
+      animate="animated"
       className={cn("relative block overflow-hidden", className)}
       style={{ lineHeight: 0.75 }}
     >
@@ -57,8 +57,15 @@ const TextRoll = ({ children, className, center = false }) => {
 
           return (
             <motion.span
-              variants={{ initial: { y: 0 }, hovered: { y: "-100%" } }}
-              transition={{ ease: "easeInOut", delay }}
+              variants={{ initial: { y: 0 }, animated: { y: "-100%" } }}
+              transition={{
+                ease: "easeInOut",
+                delay,
+                duration: 0.5,      // duration of each animation
+                repeat: Infinity,    // repeat indefinitely
+                repeatType: "reverse", // reverse after each animation
+                repeatDelay: 2.5,    // 2.5s wait before reversing (so total ~3s)
+              }}
               className="inline-block"
               key={i}
             >
@@ -75,8 +82,15 @@ const TextRoll = ({ children, className, center = false }) => {
 
           return (
             <motion.span
-              variants={{ initial: { y: "100%" }, hovered: { y: 0 } }}
-              transition={{ ease: "easeInOut", delay }}
+              variants={{ initial: { y: "100%" }, animated: { y: 0 } }}
+              transition={{
+                ease: "easeInOut",
+                delay,
+                duration: 0.5,
+                repeat: Infinity,
+                repeatType: "reverse",
+                repeatDelay: 2.5,
+              }}
               className="inline-block"
               key={i}
             >

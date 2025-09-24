@@ -1,9 +1,9 @@
 .MainContainer {
   display: grid;
   grid-template-columns: 1fr;
-  justify-items: center; /* centers children horizontally inside grid cells */
-  align-items: center;   /* centers children vertically inside grid cells */
-  gap: 1rem;             /* optional spacing between rows */
+  justify-items: center; 
+  align-items: center;  
+  gap: 1rem;             
 }
 .MainContainer a {
     text-decoration: none ; 

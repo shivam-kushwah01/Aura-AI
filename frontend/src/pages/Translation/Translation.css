@@ -1,5 +1,6 @@
 .translation-app {
-  max-width: 25rem;
+  width: 80%;
+  max-width: 50rem;
   aspect-ratio: 2;
   margin: 1rem auto;
   padding: 1rem;
