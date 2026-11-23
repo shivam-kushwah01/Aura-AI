@@ -1,11 +1,27 @@
+.tools-section {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  scroll-margin-top: 6rem;
+}
+
+.tools-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.tools-header h2 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height: 1.1;
+}
+
+.tools-header p {
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 0.5rem;
+}
+
 .MainContainer {
   display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center; 
-  align-items: center;  
-  gap: 1rem;             
-}
-.MainContainer a {
-    text-decoration: none ; 
-    color: white;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 1.5rem;
 }

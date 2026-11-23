@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
-import './Translation.css';
+import ToolHeader from '../ToolHeader';
+import '../tool.css';
 
-export default function Translation() {
-  const [inputText, setInputText] = useState('');
-  const [translatedText, setTranslatedText] = useState('');
-  const [targetLanguage, setTargetLanguage] = useState('es-ES');
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-  const MURF_API_KEY = import.meta.env.VITE_MURF_API_KEY;
-
-  const languages = [
+const languages = [
   { code: 'en-US', name: 'English - US & Canada' },
   { code: 'en-UK', name: 'English - UK' },
   { code: 'en-IN', name: 'English - India' },
@@ -34,6 +27,15 @@ export default function Translation() {
   { code: 'el-GR', name: 'Greek - Greece' }
 ];
 
+export default function Translation() {
+  const [inputText, setInputText] = useState('');
+  const [translatedText, setTranslatedText] = useState('');
+  const [targetLanguage, setTargetLanguage] = useState('es-ES');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [copied, setCopied] = useState(false);
+  const MURF_API_KEY = import.meta.env.VITE_MURF_API_KEY;
+
   const translateText = async () => {
     if (!inputText.trim()) {
       setError('Please enter text to translate');
@@ -43,6 +45,7 @@ export default function Translation() {
     setIsLoading(true);
     setError('');
     setTranslatedText('');
+    setCopied(false);
 
     try {
       const response = await fetch('https://api.murf.ai/v1/text/translate', {
@@ -58,24 +61,53 @@ export default function Translation() {
       });
 
       const data = await response.json();
-      console.log(data);
       setTranslatedText(data.translations[0].translated_text);
     } catch (err) {
-      setError('Translation service unavailable');
+      setError('Translation service unavailable. Please try again.');
       console.error(err);
     } finally {
       setIsLoading(false);
     }
   };
 
+  const handleKeyDown = (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter' && !isLoading) {
+      translateText();
+    }
+  };
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(translatedText);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setError('Could not copy. Please select the text and copy it manually.');
+    }
+  };
+
+  const handleClear = () => {
+    setInputText('');
+    setTranslatedText('');
+    setError('');
+    setCopied(false);
+  };
+
+  const targetName = languages.find((l) => l.code === targetLanguage)?.name;
+
   return (
-    <div className="translation-app">
-      <h1>Text Translator</h1>
-      
-      <div className="language-selector">
-        <label htmlFor="language">Target Language:</label>
+    <div className="tool-page">
+      <ToolHeader
+        icon="ri-translate"
+        title="Translate"
+        description="Write in any language and get an instant translation."
+      />
+
+      <div className="tool-panel glass">
+        <label htmlFor="language" className="tool-label">Translate to</label>
         <select
           id="language"
+          className="tool-select"
           value={targetLanguage}
           onChange={(e) => setTargetLanguage(e.target.value)}
           disabled={isLoading}
@@ -86,33 +118,76 @@ export default function Translation() {
             </option>
           ))}
         </select>
+
+        <div className="tool-grid-2" style={{ marginTop: '1.25rem' }}>
+          <div>
+            <label htmlFor="tr-input" className="tool-label">
+              Original text
+              <span className="tool-meta">{inputText.length} characters</span>
+            </label>
+            <textarea
+              id="tr-input"
+              className="tool-textarea"
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Enter text to translate..."
+              disabled={isLoading}
+            />
+          </div>
+
+          <div>
+            <div className="tool-label">
+              <label htmlFor="tr-output">{targetName}</label>
+              <button
+                className="btn-ghost btn-small"
+                onClick={handleCopy}
+                disabled={!translatedText}
+              >
+                <i className={copied ? 'ri-check-line' : 'ri-file-copy-line'} aria-hidden="true"></i>
+                {copied ? 'Copied!' : 'Copy'}
+              </button>
+            </div>
+            <textarea
+              id="tr-output"
+              className="tool-textarea"
+              value={translatedText}
+              readOnly
+              placeholder={isLoading ? 'Translating...' : 'Translation will appear here...'}
+            />
+          </div>
+        </div>
+
+        <div className="tool-actions">
+          <button
+            onClick={translateText}
+            disabled={isLoading || !inputText.trim()}
+            className="btn-primary"
+          >
+            {isLoading ? (
+              <>
+                <span className="spinner" aria-hidden="true"></span> Translating...
+              </>
+            ) : (
+              <>
+                <i className="ri-translate-2" aria-hidden="true"></i> Translate
+              </>
+            )}
+          </button>
+          <button className="btn-ghost" onClick={handleClear} disabled={isLoading || (!inputText && !translatedText)}>
+            <i className="ri-delete-bin-line" aria-hidden="true"></i> Clear
+          </button>
+          <span className="tool-hint">
+            <span className="kbd">Ctrl</span> + <span className="kbd">Enter</span> to translate
+          </span>
+        </div>
+
+        {error && (
+          <div className="tool-error" role="alert">
+            <i className="ri-error-warning-line" aria-hidden="true"></i> {error}
+          </div>
+        )}
       </div>
-
-      <div className="text-areas">
-        <textarea
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          placeholder="Enter text to translate..."
-          disabled={isLoading}
-        />
-        
-        <textarea
-          value={translatedText}
-          readOnly
-          placeholder="Translation will appear here..."
-          className="output"
-        />
-      </div>
-
-      <button 
-        onClick={translateText}
-        disabled={isLoading || !inputText.trim()}
-        className='translation-btn'
-      >
-        {isLoading ? 'Translating...' : 'Translate'}
-      </button>
-
-      {error && <p className="error">{error}</p>}
     </div>
   );
 }

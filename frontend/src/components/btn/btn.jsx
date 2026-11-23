@@ -42,7 +42,7 @@ const Link001 = ({ children, href, className }) => {
       href={href}
       target="_blank"
       className={cn(
-        "group relative inline-block flex items-center w-25",
+        "group relative inline-block flex items-center min-w-26",
         "before:pointer-events-none before:absolute before:left-0 before:top-[1.5em] before:h-[0.05em] before:w-full before:bg-current before:content-['']",
         "before:origin-right before:scale-x-0 before:transition-transform before:duration-300 before:ease-[cubic-bezier(0.4,0,0.2,1)]",
         "hover:before:origin-left hover:before:scale-x-100",

@@ -37,7 +37,7 @@ export default function AuraAIFaq() {
     {
       q: "What are the pricing plans?",
       a:
-        "Aura AI offers flexible pricing tiers including a free trial. Plans vary by usage, features, and enterprise needs — visit the Pricing page or contact Sales for a tailored quote.",
+        "Aura AI offers flexible pricing tiers including a free trial. Plans vary by usage, features, and enterprise needs — visit the Pricing page for details.",
     },
     {
       q: "Can I integrate Aura AI into my existing apps?",
@@ -69,15 +69,33 @@ export default function AuraAIFaq() {
         {faqs.map((item, idx) => (
           <div
             key={idx}
-            className="border border-gray-100 rounded-xl overflow-hidden"
-            aria-expanded={openIndex === idx}
+            className={`glass rounded-xl overflow-hidden transition-colors ${
+              openIndex === idx ? "border-pink-300/60" : ""
+            }`}
           >
-              <div className="p-5">
-                <h3 className="text-lg font-medium">{item.q}</h3>
-                <p className="mt-1 text-sm text-white-500 hidden sm:block">
-                <p className="text-sm text-white-700">{item.a}</p>
-                </p>
+            <button
+              type="button"
+              className="w-full flex items-center justify-between gap-4 p-5 text-left"
+              aria-expanded={openIndex === idx}
+              onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+            >
+              <h3 className="text-lg font-medium">{item.q}</h3>
+              <i
+                className={`ri-add-line text-xl transition-transform duration-300 ${
+                  openIndex === idx ? "rotate-45" : ""
+                }`}
+                aria-hidden="true"
+              ></i>
+            </button>
+            <div
+              className={`grid transition-all duration-300 ${
+                openIndex === idx ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+              }`}
+            >
+              <div className="overflow-hidden">
+                <p className="px-5 pb-5 text-sm text-white/80 leading-relaxed">{item.a}</p>
               </div>
+            </div>
           </div>
         ))}
       </div>
